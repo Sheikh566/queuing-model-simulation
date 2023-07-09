@@ -10,10 +10,6 @@ from utils import (
 )
 from arrival_table import construct_avg_arrival_lookup_table
 
-
-NUM_OF_RECORDS = 10
-
-
 def construct_simulation_table(
     num_of_servers,
     num_of_observations,
@@ -39,6 +35,7 @@ def construct_simulation_table(
             "end_time",
             "turn_around_time",
             "wait_time",
+            "response_time",
         ]
     )
 
@@ -88,8 +85,10 @@ def construct_simulation_table(
             )
         df_simulation_table.loc[row_index, "start_time"] = start_time
         df_simulation_table.loc[row_index, "end_time"] = end_time
-        df_simulation_table.loc[row_index, "turn_around_time"] = end_time - arrival_time
-        df_simulation_table.loc[row_index, "wait_time"] = start_time - arrival_time
+        turnAroundTime = end_time - arrival_time
+        df_simulation_table.loc[row_index, "turn_around_time"] = turnAroundTime
+        df_simulation_table.loc[row_index, "wait_time"] = turnAroundTime - service_time
+        df_simulation_table.loc[row_index, "response_time"] = start_time - arrival_time
 
     averages = calculate_averages(df_simulation_table, num_of_servers)
 

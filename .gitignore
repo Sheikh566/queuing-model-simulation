@@ -1,2 +1,7 @@
 .vscode/*
 __pycache__
+client/src/components/ArrivalTable.jsx
+.gitignore
+thunder-tests/*
+server/tempCodeRunnerFile.py
+client/.vscode

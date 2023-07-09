@@ -48,30 +48,30 @@ def calculate_poisson_cdf(k, mean):
 def calculate_averages(df_simulation_table, num_of_servers):
     return [
         {
-            "name": "Average Inter Arrival Time",
+            "name": "Inter Arrival Time",
             "value": df_simulation_table.inter_arrival_time.mean(),
         },
         {
-            "name": "Average Service Time",
+            "name": "Service Time",
             "value": df_simulation_table.service_time.mean(),
         },
         {
-            "name": "Average Turn Around Time (Ws)",
+            "name": "Turn Around Time",
             "value": df_simulation_table.turn_around_time.mean(),
         },
         {
-            "name": "Average Wait Time (Wq)",
+            "name": "Wait Time",
             "value": df_simulation_table.wait_time.mean(),
         },
         {
-            "name": "Length of system (Ls)",
+            "name": "Length of system",
             "value": 
                 df_simulation_table.turn_around_time.sum()
                 / df_simulation_table.iloc[-1].end_time
             ,
         },
         {
-            "name": "Length of queue (Lq)",
+            "name": "Length of queue",
             "value": 
                 df_simulation_table.wait_time.sum()
                 / df_simulation_table.iloc[-1].start_time
